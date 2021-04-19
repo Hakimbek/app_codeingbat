@@ -10,6 +10,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Table(uniqueConstraints = @UniqueConstraint(columnNames = {"name", "language_id"}))
 public class TaskCategory {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,6 +23,7 @@ public class TaskCategory {
 
     @ManyToOne(optional = false)
     private Language language;
+
 
     public TaskCategory(String name, String info, Language language) {
         this.name = name;
