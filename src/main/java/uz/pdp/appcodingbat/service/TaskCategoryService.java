@@ -68,8 +68,9 @@ public class TaskCategoryService {
      * @return RESULT
      */
     public Result add(TaskCategoryDto taskCategoryDto) {
-        boolean existsByName = taskCategoryRepository.existsByName(taskCategoryDto.getName());
-        if (existsByName) {
+        boolean existsByNameAndLanguageId = taskCategoryRepository.existsByNameAndLanguageId(
+                taskCategoryDto.getName(), taskCategoryDto.getLanguagesId());
+        if (existsByNameAndLanguageId) {
             return new Result("TaskCategory already exist", false);
         }
 
@@ -94,8 +95,9 @@ public class TaskCategoryService {
      * @return RESULT
      */
     public Result edit(Integer id, TaskCategoryDto taskCategoryDto) {
-        boolean existsByNameAndIdNot = taskCategoryRepository.existsByNameAndIdNot(taskCategoryDto.getName(), id);
-        if (existsByNameAndIdNot) {
+        boolean existsByNameAndLanguageIdAndIdNot = taskCategoryRepository.existsByNameAndLanguageIdAndIdNot(
+                taskCategoryDto.getName(), taskCategoryDto.getLanguagesId(), id);
+        if (existsByNameAndLanguageIdAndIdNot) {
             return new Result("TaskCategory already exist", false);
         }
 

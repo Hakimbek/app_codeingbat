@@ -5,7 +5,7 @@ import uz.pdp.appcodingbat.entity.TaskCategory;
 import uz.pdp.appcodingbat.entity.User;
 
 public interface TaskCategoryRepository extends JpaRepository<TaskCategory, Integer> {
-    boolean existsByName(String name);
+    boolean existsByNameAndLanguageId(String name, Integer language_id);
 
-    boolean existsByNameAndIdNot(String name, Integer id);
+    boolean existsByNameAndLanguageIdAndIdNot(String name, Integer language_id, Integer id);
 }
