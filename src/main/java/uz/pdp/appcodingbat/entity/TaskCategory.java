@@ -5,7 +5,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.Set;
 
 @Data
 @AllArgsConstructor
@@ -21,10 +20,10 @@ public class TaskCategory {
 
     private String info;
 
-    @OneToMany
-    private Set<Language> language;
+    @ManyToOne(optional = false)
+    private Language language;
 
-    public TaskCategory(String name, String info, Set<Language> language) {
+    public TaskCategory(String name, String info, Language language) {
         this.name = name;
         this.info = info;
         this.language = language;

@@ -73,11 +73,14 @@ public class TaskCategoryService {
             return new Result("TaskCategory already exist", false);
         }
 
-        List<Language> languageList = languageRepository.findAllById(taskCategoryDto.getLanguages());
-        Set<Language> languages = new LinkedHashSet<>(languageList);
+        Optional<Language> optionalLanguage = languageRepository.findById(taskCategoryDto.getLanguagesId());
+        if (!optionalLanguage.isPresent()) {
+            return new Result("Language not found", false);
+        }
+        Language language = optionalLanguage.get();
 
         TaskCategory taskCategory = new TaskCategory(taskCategoryDto.getName(),
-                                         taskCategoryDto.getInfo(), languages);
+                                         taskCategoryDto.getInfo(), language);
         taskCategoryRepository.save(taskCategory);
         return new Result("Successfully added", true);
     }
