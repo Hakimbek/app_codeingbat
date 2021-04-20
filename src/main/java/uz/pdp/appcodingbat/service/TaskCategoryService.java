@@ -9,10 +9,8 @@ import uz.pdp.appcodingbat.payload.TaskCategoryDto;
 import uz.pdp.appcodingbat.repository.LanguageRepository;
 import uz.pdp.appcodingbat.repository.TaskCategoryRepository;
 
-import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 
 @Service
 public class TaskCategoryService {

@@ -38,7 +38,7 @@ public class TaskController {
     @GetMapping("/{id}")
     public ResponseEntity<Task> getById(@PathVariable Integer id) {
         Task task = taskService.getById(id);
-        return ResponseEntity.ok(task);
+        return ResponseEntity.status(task != null ? 200 : 409).body(task);
     }
 
 
@@ -75,12 +75,12 @@ public class TaskController {
     /**
      * EDIT TASK BY ID
      *
-     * @param id          INTEGER
+     * @param id      INTEGER
      * @param taskDto NAME (String),
-     *                        TEXT (String),
-     *                        SOLUTION (String),
-     *                        EXAMPLE (String),
-     *                        TASK CATEGORY ID (Integer)
+     *                TEXT (String),
+     *                SOLUTION (String),
+     *                EXAMPLE (String),
+     *                TASK CATEGORY ID (Integer)
      * @return RESULT
      */
     @PutMapping("/{id}")

@@ -41,7 +41,7 @@ public class UserController {
     @GetMapping("/{id}")
     public ResponseEntity<User> getById(@PathVariable Integer id) {
         User user = userService.getById(id);
-        return ResponseEntity.ok(user);
+        return ResponseEntity.status(user != null ? 200 : 409).body(user);
     }
 
 
@@ -74,7 +74,7 @@ public class UserController {
     /**
      * EDIT USER BY ID
      *
-     * @param id          INTEGER
+     * @param id      INTEGER
      * @param userDto EMAIL (String), PASSWORD (String)
      * @return RESULT
      */

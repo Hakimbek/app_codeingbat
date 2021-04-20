@@ -38,7 +38,7 @@ public class LanguageController {
     @GetMapping("/{id}")
     public ResponseEntity<Language> getById(@PathVariable Integer id) {
         Language language = languageService.getById(id);
-        return ResponseEntity.ok(language);
+        return ResponseEntity.status(language != null ? 200 : 409).body(language);
     }
 
 

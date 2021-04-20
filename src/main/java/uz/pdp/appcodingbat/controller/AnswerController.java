@@ -41,7 +41,7 @@ public class AnswerController {
     @GetMapping("/{id}")
     public ResponseEntity<Answer> getById(@PathVariable Integer id) {
         Answer answer = answerService.getById(id);
-        return ResponseEntity.ok(answer);
+        return ResponseEntity.status(answer != null ? 200 : 409).body(answer);
     }
 
 
@@ -74,7 +74,7 @@ public class AnswerController {
     /**
      * EDIT ANSWER BY ID
      *
-     * @param id          INTEGER
+     * @param id        INTEGER
      * @param answerDto USER ID (Integer), TASK ID (Integer), CORRECT (Boolean)
      * @return RESULT
      */

@@ -41,7 +41,7 @@ public class TaskCategoryController {
     @GetMapping("/{id}")
     public ResponseEntity<TaskCategory> getById(@PathVariable Integer id) {
         TaskCategory taskCategory = taskCategoryService.getById(id);
-        return ResponseEntity.ok(taskCategory);
+        return ResponseEntity.status(taskCategory != null ? 200 : 409).body(taskCategory);
     }
 
 
@@ -74,7 +74,7 @@ public class TaskCategoryController {
     /**
      * EDIT TASK CATEGORY BY ID
      *
-     * @param id          INTEGER
+     * @param id              INTEGER
      * @param taskCategoryDto NAME (String), INFO (String), LIST<Integer>
      * @return RESULT
      */
